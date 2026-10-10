@@ -1,0 +1,9 @@
+services:
+  mongo: {image: "mongo:7", ports: ["27017:27017"], volumes: ["mongo:/data/db"]}
+  api:
+    build: ./server
+    ports: ["4000:4000"]
+    environment: {MONGO_URI: "mongodb://mongo:27017/shopqr", JWT_SECRET: "local-dev-secret", CLIENT_ORIGIN: "http://localhost:3000"}
+    env_file: [{path: ./server/.env, required: false}]
+    depends_on: [mongo]
+volumes: {mongo: {}}

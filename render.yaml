@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: shopqr-api
+    runtime: docker
+    rootDir: server
+    healthCheckPath: /api/health
+    envVars:
+      - {key: MONGO_URI, sync: false}
+      - {key: JWT_SECRET, generateValue: true}
+      - {key: GEMINI_API_KEY, sync: false}
+      - {key: CLOUDINARY_URL, sync: false}
+      - {key: CLIENT_ORIGIN, sync: false}
+      - {key: ADMIN_CODE, sync: false}

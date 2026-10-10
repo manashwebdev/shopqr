@@ -1,0 +1,12 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: npm --prefix server i && node --check server/src/index.js
+      - run: npm --prefix client i && npm --prefix client run build
+        env: {NEXT_PUBLIC_API: "http://localhost:4000"}

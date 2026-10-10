@@ -1,0 +1,33 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+:root{--tint:255,255,255}
+html,body{background:#050505;color:#fff;overflow-x:hidden}
+.glass{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(14px);box-shadow:0 0 40px -12px rgba(var(--tint),.12)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;border-radius:.75rem;padding:.65rem 1.1rem;font-weight:600;font-size:.9rem;transition:transform .3s,box-shadow .3s}
+.btn:hover{transform:scale(1.03);box-shadow:0 0 28px rgba(255,255,255,.18)}
+.btn-w{background:#f5f5f5;color:#050505}.btn-g{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04)}
+.inp{width:100%;border-radius:.75rem;background:#0E0E0E;border:1px solid rgba(255,255,255,.08);padding:.65rem .85rem;font-size:.9rem}
+.grid-glow{background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 30%,#000,transparent 70%)}
+.blob{position:absolute;border-radius:9999px;filter:blur(90px);background:rgba(255,255,255,.07);animation:drift 40s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translate(80px,60px) scale(1.2)}}
+:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.t-diwali{--tint:255,190,90}.t-christmas{--tint:200,230,200}.t-newyear{--tint:230,230,255}.t-summer{--tint:255,230,150}
+.glass{position:relative;transition:border-color .3s,box-shadow .3s,transform .3s}
+.glass::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.09),transparent 60%)}
+.glass:hover{border-color:rgba(255,255,255,.2);box-shadow:0 0 60px -10px rgba(var(--tint),.22)}.glass:hover::before{opacity:1}
+.btn-w{box-shadow:0 0 0 1px rgba(255,255,255,.4),0 0 24px rgba(255,255,255,.12)}
+.particle{position:absolute;bottom:-10px;border-radius:9999px;background:rgba(255,255,255,.35);animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-110vh);opacity:0}}
+.sheen{background:linear-gradient(110deg,#fff 30%,#777 50%,#fff 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 8s linear infinite}
+@keyframes sheen{to{background-position:-200% 0}}
+
+.noscroll{scrollbar-width:none}.noscroll::-webkit-scrollbar{display:none}
+select.inp{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23A1A1AA' stroke-width='2'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .9rem center;padding-right:2.2rem}
+input[type=file]::file-selector-button{margin-right:.75rem;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;border-radius:.5rem;padding:.3rem .7rem}
+.inp::placeholder{color:#6b6b73}.inp:focus{border-color:rgba(255,255,255,.35);box-shadow:0 0 0 3px rgba(255,255,255,.06)}
+.marquee{display:flex;width:max-content;animation:mq 40s linear infinite}@keyframes mq{to{transform:translateX(-50%)}}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+.ring::after{content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;background:conic-gradient(from var(--a),transparent 0 70%,#fff 85%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 6s linear infinite}
+@keyframes spin{to{--a:360deg}}
+.pop{animation:pop .45s cubic-bezier(.22,1,.36,1) both}@keyframes pop{from{opacity:0;transform:translateY(12px)}}
+.shimmer{background:linear-gradient(100deg,#141414 30%,#1f1f1f 50%,#141414 70%);background-size:200% 100%;animation:sh 1.4s linear infinite}@keyframes sh{to{background-position:-200% 0}}
